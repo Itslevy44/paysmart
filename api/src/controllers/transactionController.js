@@ -20,10 +20,13 @@ exports.createTransaction = async (req, res) => {
         if (!type) req.body.type = 'mpesa';
     }
 
+    // Determine Project ID (if external dev)
+    const projectId = req.user.isExternalDev ? req.project.id : null;
+
     try {
         const newTransaction = await pool.query(
-            'INSERT INTO transactions (user_id, amount, type, phone_number, reference, status) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *',
-            [userId, amount, req.body.type || type, phone_number, reference, status]
+            'INSERT INTO transactions (user_id, amount, type, phone_number, reference, status, project_id) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
+            [userId, amount, req.body.type || type, phone_number, reference, status, projectId]
         );
 
         // Trigger M-Pesa STK Push if type is mpesa

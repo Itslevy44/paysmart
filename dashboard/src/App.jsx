@@ -7,34 +7,32 @@ import { AuthProvider } from './contexts/AuthContext';
 import Layout from './layouts/Layout';
 import ProtectedRoute from './components/ProtectedRoute';
 
-import Transactions from './pages/Transactions';
-
-import ApiKeys from './pages/ApiKeys';
-import Webhooks from './pages/Webhooks';
-import Sandbox from './pages/Sandbox';
-import Overview from './pages/Overview';
-import Settings from './pages/Settings';
+import { ProjectProvider } from './contexts/ProjectContext';
+import Projects from './pages/Projects';
 
 function App() {
   return (
     <AuthProvider>
-      <Router>
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+      <ProjectProvider>
+        <Router>
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
 
-          <Route element={<ProtectedRoute />}>
-            <Route element={<Layout />}>
-              <Route path="/" element={<Overview />} />
-              <Route path="/transactions" element={<Transactions />} />
-              <Route path="/api-keys" element={<ApiKeys />} />
-              <Route path="/webhooks" element={<Webhooks />} />
-              <Route path="/sandbox" element={<Sandbox />} />
-              <Route path="/settings" element={<Settings />} />
+            <Route element={<ProtectedRoute />}>
+              <Route element={<Layout />}>
+                <Route path="/" element={<Overview />} />
+                <Route path="/projects" element={<Projects />} />
+                <Route path="/transactions" element={<Transactions />} />
+                <Route path="/api-keys" element={<ApiKeys />} />
+                <Route path="/webhooks" element={<Webhooks />} />
+                <Route path="/sandbox" element={<Sandbox />} />
+                <Route path="/settings" element={<Settings />} />
+              </Route>
             </Route>
-          </Route>
-        </Routes>
-      </Router>
+          </Routes>
+        </Router>
+      </ProjectProvider>
     </AuthProvider>
   );
 }

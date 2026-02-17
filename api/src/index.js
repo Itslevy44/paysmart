@@ -11,6 +11,7 @@ const apiKeyRoutes = require('./routes/apiKeyRoutes');
 const webhookRoutes = require('./routes/webhookRoutes');
 const sandboxRoutes = require('./routes/sandboxRoutes');
 const callbackRoutes = require('./routes/callbackRoutes');
+const projectRoutes = require('./routes/projectRoutes');
 
 app.use(cors());
 app.use(express.json());
@@ -21,6 +22,7 @@ app.use('/api/api-keys', apiKeyRoutes);
 app.use('/api/webhooks', webhookRoutes);
 app.use('/api/sandbox', sandboxRoutes);
 app.use('/api/callbacks', callbackRoutes); // Mounted at /api/callbacks
+app.use('/api/projects', projectRoutes);
 
 app.get('/', (req, res) => {
   res.json({ message: 'PaySmart API is running' });

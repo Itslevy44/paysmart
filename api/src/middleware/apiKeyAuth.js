@@ -12,7 +12,7 @@ module.exports = async (req, res, next) => {
     try {
         // Verify token
         const result = await pool.query(
-            'SELECT user_id, environment FROM api_keys WHERE key_value = $1 AND is_active = true',
+            'SELECT user_id, environment, project_id FROM api_keys WHERE key_value = $1 AND is_active = true',
             [apiKey]
         );
 
@@ -20,13 +20,17 @@ module.exports = async (req, res, next) => {
             return res.status(401).json({ message: 'Invalid API Key' });
         }
 
-        const { user_id, environment } = result.rows[0];
+        const { user_id, environment, project_id } = result.rows[0];
 
         // Attach user info to request object
         req.user = {
             id: user_id,
             environment: environment,
             isExternalDev: true // Flag to identify external API usage
+        };
+
+        req.project = {
+            id: project_id
         };
 
         next();

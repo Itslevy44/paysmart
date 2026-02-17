@@ -1,16 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import api from '../services/api';
+import { ProjectContext } from '../contexts/ProjectContext'; // Import context
+import { ClipboardCopyIcon, RefreshIcon } from '@heroicons/react/outline';
 
 const ApiKeys = () => {
+    const { selectedProject } = useContext(ProjectContext); // Get selected project
     const [keys, setKeys] = useState([]);
     const [loading, setLoading] = useState(true);
 
     const fetchKeys = async () => {
+        if (!selectedProject) return;
+        setLoading(true);
         try {
-            const response = await api.get('/api-keys');
+            // Pass projectId to API
+            const response = await api.get(`/api-keys?projectId=${selectedProject.id}`);
             setKeys(response.data);
         } catch (error) {
-            console.error("Failed to fetch API keys", error);
+            console.error("Failed to fetch keys", error);
         } finally {
             setLoading(false);
         }
@@ -18,16 +24,19 @@ const ApiKeys = () => {
 
     useEffect(() => {
         fetchKeys();
-    }, []);
+    }, [selectedProject]); // Refetch when project changes
 
-    const handleRegenerate = async (type, environment) => {
-        if (!window.confirm(`Are you sure you want to regenerate the ${environment} ${type} key? The old key will stop working immediately.`)) {
-            return;
-        }
+    const regenerateKey = async (type, environment) => {
+        if (!window.confirm(`Are you sure you want to roll ${type} key? Old key will stop working immediately.`)) return;
 
         try {
-            const response = await api.post('/api-keys/regenerate', { type, environment });
-            // Update local state: replace the old key or add the new one
+            const response = await api.post('/api-keys/regenerate', {
+                type,
+                environment,
+                projectId: selectedProject.id // Pass projectId
+            });
+
+            // Updates keys list ...ate: replace the old key or add the new one
             // Refresh list to be safe
             fetchKeys();
             alert('Key regenerated successfully. Make sure to copy your new secret key!');
