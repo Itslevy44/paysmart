@@ -12,6 +12,10 @@ import Projects from './pages/Projects';
 import Overview from './pages/Overview';
 import Settings from './pages/Settings';
 import Documentation from './pages/Documentation';
+import Transactions from './pages/Transactions';
+import ApiKeys from './pages/ApiKeys';
+import Webhooks from './pages/Webhooks';
+import Sandbox from './pages/Sandbox';
 
 function App() {
   return (
