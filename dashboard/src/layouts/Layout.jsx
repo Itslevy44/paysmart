@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Outlet, Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { ProjectContext } from '../contexts/ProjectContext';
-import { SelectorIcon } from '@heroicons/react/solid';
+import { SelectorIcon } from '@heroicons/react/solid/esm/index.js';
 
 const Layout = () => {
     const { logout, user } = useAuth();

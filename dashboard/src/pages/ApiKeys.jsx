@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import api from '../services/api';
 import { ProjectContext } from '../contexts/ProjectContext'; // Import context
-import { ClipboardCopyIcon, RefreshIcon } from '@heroicons/react/outline';
+import { ClipboardCopyIcon, RefreshIcon } from '@heroicons/react/outline/esm/index.js';
 
 const ApiKeys = () => {
     const { selectedProject } = useContext(ProjectContext); // Get selected project

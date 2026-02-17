@@ -1,6 +1,25 @@
-import React from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import React, { useEffect } from 'react';
+import Prism from 'prismjs';
+import 'prismjs/themes/prism-tomorrow.css';
+import 'prismjs/components/prism-json';
+import 'prismjs/components/prism-javascript';
+import 'prismjs/components/prism-bash';
+
+const CodeBlock = ({ code, language }) => {
+    useEffect(() => {
+        Prism.highlightAll();
+    }, [code, language]);
+
+    return (
+        <div className="rounded-md overflow-hidden">
+            <pre className="!m-0 !rounded-none">
+                <code className={`language-${language}`}>
+                    {code}
+                </code>
+            </pre>
+        </div>
+    );
+};
 
 const Documentation = () => {
     return (
@@ -41,14 +60,12 @@ const Documentation = () => {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                         <div>
                             <h3 className="text-sm font-bold text-gray-900 mb-2">Request Payload</h3>
-                            <SyntaxHighlighter language="json" style={vscDarkPlus} className="rounded-md">
-                                {`{
+                            <CodeBlock language="json" code={`{
   "amount": 100,
   "phone_number": "254700000000",
   "reference": "YourRef123",
   "type": "mpesa"
-}`}
-                            </SyntaxHighlighter>
+}`} />
                             <h4 className="text-sm font-medium text-gray-900 mt-4">Parameters</h4>
                             <ul className="list-disc pl-5 mt-2 text-sm text-gray-600 space-y-1">
                                 <li><strong>amount</strong>: (Number) Amount to charge.</li>
@@ -60,8 +77,7 @@ const Documentation = () => {
 
                         <div>
                             <h3 className="text-sm font-bold text-gray-900 mb-2">Success Response (201 Created)</h3>
-                            <SyntaxHighlighter language="json" style={vscDarkPlus} className="rounded-md">
-                                {`{
+                            <CodeBlock language="json" code={`{
   "id": 42,
   "status": "pending",
   "amount": "100.00",
@@ -69,8 +85,7 @@ const Documentation = () => {
   "reference": "YourRef123",
   "checkout_request_id": "ws_CO_...",
   "created_at": "2023-10-27T10:00:00.000Z"
-}`}
-                            </SyntaxHighlighter>
+}`} />
                             <p className="mt-2 text-sm text-gray-500">
                                 The status is initially <strong>pending</strong>. We will notify your webhook when it changes.
                             </p>
@@ -93,8 +108,7 @@ const Documentation = () => {
 
                     <div>
                         <h3 className="text-sm font-bold text-gray-900 mb-2">Webhook Payload</h3>
-                        <SyntaxHighlighter language="json" style={vscDarkPlus} className="rounded-md">
-                            {`{
+                        <CodeBlock language="json" code={`{
   "event": "payment.success",
   "data": {
     "id": 42,
@@ -104,8 +118,7 @@ const Documentation = () => {
     "checkout_request_id": "ws_CO_...",
     "mpesa_receipt": "QWE123RTY"
   }
-}`}
-                        </SyntaxHighlighter>
+}`} />
                     </div>
 
                     <div>
@@ -124,8 +137,7 @@ const Documentation = () => {
                 </div>
                 <div className="px-4 py-5 sm:p-6">
                     <h3 className="text-sm font-bold text-gray-900 mb-2">Node.js (Axios)</h3>
-                    <SyntaxHighlighter language="javascript" style={vscDarkPlus} className="rounded-md">
-                        {`const axios = require('axios');
+                    <CodeBlock language="javascript" code={`const axios = require('axios');
 
 const pay = async () => {
   try {
@@ -146,8 +158,7 @@ const pay = async () => {
   }
 };
 
-pay();`}
-                    </SyntaxHighlighter>
+pay();`} />
                 </div>
             </div>
 

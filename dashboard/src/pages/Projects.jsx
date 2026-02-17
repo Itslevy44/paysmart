@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { ProjectContext } from '../contexts/ProjectContext';
-import { PlusIcon, TrashIcon, FolderIcon } from '@heroicons/react/solid';
+import { PlusIcon, TrashIcon, FolderIcon } from '@heroicons/react/solid/esm/index.js';
 
 const Projects = () => {
     const { projects, selectedProject, selectProject, createProject, deleteProject } = useContext(ProjectContext);
