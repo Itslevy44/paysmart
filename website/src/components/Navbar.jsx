@@ -25,10 +25,10 @@ const Navbar = () => {
                         </div>
                     </div>
                     <div className="hidden sm:ml-6 sm:flex sm:items-center">
-                        <a href="http://localhost:5173/login" className="text-gray-500 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium">
+                        <a href="https://paysmart-dashboard.vercel.app/login" className="text-gray-500 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium">
                             Log in
                         </a>
-                        <a href="http://localhost:5173/register" className="ml-3 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        <a href="https://paysmart-dashboard.vercel.app/register" className="ml-3 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                             Get Started
                         </a>
                     </div>

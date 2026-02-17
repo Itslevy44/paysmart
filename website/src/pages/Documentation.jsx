@@ -26,7 +26,7 @@ const Documentation = () => {
                             </p>
                             <div className="bg-gray-900 rounded-md p-4 overflow-x-auto">
                                 <code className="text-green-400">
-                                    curl -X POST https://api.paysmart.co.ke/api/v1/transactions \<br />
+                                    curl -X POST https://paysmart-five.vercel.app/api/v1/transactions \<br />
                                     &nbsp;&nbsp;-H "x-api-key: pk_sandbox_..." \<br />
                                     &nbsp;&nbsp;-H "Content-Type: application/json" ...
                                 </code>
@@ -86,7 +86,7 @@ const Documentation = () => {
                         </div>
                         <div className="px-4 py-5 sm:p-6 space-y-4">
                             <p className="text-gray-700">
-                                Configure your webhook URL in the <a href="http://localhost:5173/webhooks" className="text-indigo-600 hover:underline">Dashboard</a>.
+                                Configure your webhook URL in the <a href="https://paysmart-dashboard.vercel.app/webhooks" className="text-indigo-600 hover:underline">Dashboard</a>.
                                 We will send a POST request with the transaction details upon completion.
                             </p>
                             <h3 className="text-sm font-medium text-gray-900">Payload Example</h3>

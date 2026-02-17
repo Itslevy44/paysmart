@@ -26,6 +26,12 @@ app.get('/', (req, res) => {
   res.json({ message: 'PaySmart API is running' });
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+// For Vercel, we need to export the app
+module.exports = app;
+
+// Only listen if run directly
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
+}

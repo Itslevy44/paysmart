@@ -3,7 +3,7 @@ import React from 'react';
 const tiers = [
     {
         name: 'Standard',
-        href: 'http://localhost:5173/register',
+        href: 'https://paysmart-dashboard.vercel.app/register',
         priceMonthly: '2.5%',
         description: 'Pay as you go for all payment methods.',
         features: [
