@@ -9,6 +9,9 @@ import ProtectedRoute from './components/ProtectedRoute';
 
 import { ProjectProvider } from './contexts/ProjectContext';
 import Projects from './pages/Projects';
+import Overview from './pages/Overview';
+import Settings from './pages/Settings';
+import Documentation from './pages/Documentation';
 
 function App() {
   return (
@@ -27,6 +30,7 @@ function App() {
                 <Route path="/api-keys" element={<ApiKeys />} />
                 <Route path="/webhooks" element={<Webhooks />} />
                 <Route path="/sandbox" element={<Sandbox />} />
+                <Route path="/documentation" element={<Documentation />} />
                 <Route path="/settings" element={<Settings />} />
               </Route>
             </Route>

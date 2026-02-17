@@ -54,6 +54,9 @@ const Layout = () => {
                     <Link to="/sandbox" className="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md">
                         Sandbox Simulator
                     </Link>
+                    <Link to="/documentation" className="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md">
+                        Documentation
+                    </Link>
                     <Link to="/settings" className="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md">
                         Settings
                     </Link>
